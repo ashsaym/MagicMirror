@@ -117,10 +117,10 @@ let config = {
                 latitudeAdjustmentMethod: 1, // Angle Based Method
                 school: 0, // Shafi
                 midnightMode: 0, // Standard
-                lat: 50.7753, // Aachen coordinates for more accurate local times
-                lon: 6.0839,  // Aachen coordinates
+                lat: 51.4781, // Aachen coordinates for more accurate local times
+                lon: 6.8625,  // Aachen coordinates
                 timezone: "Europe/Berlin",
-                locationName: "Aachen, Germany",
+                locationName: "Oberhausen, Germany",
                 // Manual adjustments for more accurate times (in minutes)
                 tune: "0,0,0,0,0,0,0", // Fajr, Sunrise, Dhuhr, Asr, Sunset, Maghrib, Isha
                 showSunrise: true,
