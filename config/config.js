@@ -39,7 +39,6 @@ let config = {
             module: "clock",
             position: "top_left"
         },
-        // iCloud Calendar
         {
             module: "calendar",
             header: "Personal Calendar",
@@ -67,34 +66,25 @@ let config = {
                 }
             }
         },
-        // Combined Government Holidays (Germany + NRW) using ICS feeds
         {
             module: "calendar",
-            header: "Government Holidays (Germany & NRW)",
+            header: "🇩🇪 German Holidays",
             position: "top_left",
             config: {
                 calendars: [
                     {
                         symbol: "flag",
                         url: "https://www.ferienwiki.de/exports/feiertage/2025/de"
-                    },
-                    {
-                        symbol: "calendar-star",
-                        url: "https://www.ferienwiki.de/exports/feiertage/2025/de/nw"
                     }
                 ],
-                maximumEntries: 30,
-                maximumNumberOfDays: 200, // Show next 30 days only
+                maximumEntries: 8,
+                maximumNumberOfDays: 180,
                 fade: false,
                 dateFormat: "ddd, MMM D",
                 timeFormat: "absolute",
                 fullDayEventDateFormat: "ddd, MMM D",
                 tableClass: "small"
             }
-        },
-        {
-            module: "compliments",
-            position: "lower_third"
         },
         {
             module: "weather",
@@ -118,17 +108,80 @@ let config = {
             }
         },
         {
+            module: "MMM-PrayerTime", 
+            header: "🕌 Prayer Times (Islamic Center Aachen)",
+            position: "top_right",
+            config: {
+                apiVersion: "1",
+                calculationMethod: 2, // Islamic Society of North America (ISNA) - commonly used in Europe
+                latitudeAdjustmentMethod: 1, // Angle Based Method
+                school: 0, // Shafi
+                midnightMode: 0, // Standard
+                lat: 50.7753, // Aachen coordinates for more accurate local times
+                lon: 6.0839,  // Aachen coordinates
+                timezone: "Europe/Berlin",
+                locationName: "Aachen, Germany",
+                // Manual adjustments for more accurate times (in minutes)
+                tune: "0,0,0,0,0,0,0", // Fajr, Sunrise, Dhuhr, Asr, Sunset, Maghrib, Isha
+                showSunrise: true,
+                showSunset: true,
+                showMidnight: false,
+                showImsak: true, // Show Imsak time
+                show24Clock: true,
+                showDate: false,
+                showLocationName: true,
+                updateInterval: 60000 * 30, // Update every 30 minutes for accuracy
+                animationSpeed: 2500,
+                colored: true,
+                timeFormat: 24
+            }
+        },
+        {
             module: "newsfeed",
+            header: "📰 World News",
             position: "bottom_bar",
             config: {
                 feeds: [
                     {
+                        title: "BBC News",
+                        url: "http://feeds.bbci.co.uk/news/rss.xml"
+                    },
+                    {
                         title: "DW News",
                         url: "https://rss.dw.com/xml/rss-en-all"
+                    },
+                    {
+                        title: "CNN Top Stories",
+                        url: "http://rss.cnn.com/rss/cnn_topstories.rss"
+                    },
+                    {
+                        title: "Al Jazeera",
+                        url: "https://www.aljazeera.com/xml/rss/all.xml"
+                    },
+                    {
+                        title: "Google News",
+                        url: "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en"
                     }
                 ],
                 showSourceTitle: true,
                 showPublishDate: true,
+                showDescription: true,
+                wrapTitle: true,
+                wrapDescription: true,
+                truncDescription: true,
+                lengthDescription: 200,
+                hideLoading: false,
+                reloadInterval: 300000, // 5 minutes
+                updateInterval: 12000, // 12 seconds for smooth transitions
+                animationSpeed: 2000,
+                maxNewsItems: 0, // Show all items
+                ignoreOldItems: false,
+                ignoreOlderThan: 24 * 60 * 60 * 1000, // 24 hours
+                removeStartTags: ['video', 'audio'],
+                removeEndTags: ['video', 'audio'],
+                prohibitedWords: [],
+                scrollLength: 500,
+                logFeedWarnings: false,
                 broadcastNewsFeeds: true,
                 broadcastNewsUpdates: true
             }
