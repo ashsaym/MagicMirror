@@ -108,7 +108,7 @@ let config = {
             }
         },
         {
-            module: "MMM-PrayerTime", 
+            module: "prayertime", 
             header: "🕌 Prayer Times (Islamic Center Aachen)",
             position: "top_right",
             config: {
