@@ -23,6 +23,9 @@ let config = {
     logLevel: ["INFO", "LOG", "WARN", "ERROR"],
     timeFormat: 24,
     units: "metric",
+    
+    // Refresh all modules every 15 minutes (900000 milliseconds)
+    updateInterval: 900000,
 
     modules: [
         {
